@@ -10,6 +10,8 @@ const auth = getAuth(app)
 const Header = () => {
 	// const {user,handleSignOut} = useFirebase();
 	const [user] = useAuthState(auth);
+	const name = user?.displayName;
+	const photo = user?.photoURL
 	
 	return (
 		<header className='p-4 dark:bg-black dark:text-gray-100'>
@@ -54,10 +56,11 @@ const Header = () => {
 					<span className='mr-5 text-blue-300 font-semibold font-mono'>
 						{user?.displayName && user.displayName}
 					</span>
-					<div className='avatar online w-11 mr-4 '>
+					<div className=' avatar   w-11 mr-4 '>
 						<img
-							className=' rounded-full ring ring-blue-600 ring-offset-base-100 ring-offset-2'
-							src={user?.photoURL}
+							className=' rounded-full  '
+							referrerPolicy='no-referrer'
+							src={photo}
 							alt=''
 						/>
 					</div>

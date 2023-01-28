@@ -9,6 +9,7 @@ const TextEditor = ({ placeholder }) => {
 		{
 			readonly: false, // all options from https://xdsoft.net/jodit/doc/,
 			placeholder: placeholder || 'Start typings...',
+			minHeight: 250
 		},
 		[placeholder]
 	);
@@ -18,10 +19,9 @@ const TextEditor = ({ placeholder }) => {
 			ref={editor}
 			value={content}
 			config={config}
-			
 			tabIndex={1} // tabIndex of textarea
 			onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-			onChange={(newContent) => {}}
+			onChange={(newContent) => setContent(newContent)}
 		/>
 	);
 };

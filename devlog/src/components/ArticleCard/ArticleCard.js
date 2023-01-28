@@ -11,10 +11,10 @@ export const ArticleCard = (props) => {
 			</figure>
 			<div className='card-body h-56'>
 				<h2 className='card-title text-white'>{title}</h2>
-				<p
+				{/* <p
 					className='text-white'
 					dangerouslySetInnerHTML={{ __html: newDescription }}
-				></p>
+				></p> */}
 				<div className='grid grid-cols-2 mt-2 '>
 					<div className='avatar grid grid-rows-2 gr'>
 						<div className='w-12 rounded-full'>

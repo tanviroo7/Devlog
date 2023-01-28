@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaRegEdit, FaRegTrashAlt, FaArrowRight } from 'react-icons/fa';
 
 const MyArticleCard = (props) => {
+	const navigate = useNavigate();
   const { img, title, description, _id, category, author, authorImg,setMyArticles , myArticles} = props.myArticle;
   const newDescription = description.slice(0, 30) + '....';
 
@@ -17,10 +18,12 @@ const MyArticleCard = (props) => {
 			.then((data) => {
 				if (data.deletedCount > 0) {
 					alert('Deleted successfully');
-					const remainingArticles = myArticles.filter(
-						(Article) => Article._id !== id
-					);
-					setMyArticles(remainingArticles);
+					// const remainingArticles = myArticles.filter(
+					// 	(Article) => Article._id !== id
+					// );
+					// setMyArticles(remainingArticles);
+					
+					navigate('/');
 				}
 			});
     }

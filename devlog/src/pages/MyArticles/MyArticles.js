@@ -28,8 +28,8 @@ const MyArticles = () => {
 	}, [user?.email]);
 
 	return (
-		<div className='bg-black'>
-			<h1 className=' text-center text-5xl mb-5  '> My Articles </h1>
+		<div className=''>
+			<h1 className='text-center bg-gradient-to-r from-blue-300 via-green-300 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl '> My Articles </h1>
 			{myArticles.map((myArticle) => (
 				<MyArticleCard
 					myArticle={myArticle}

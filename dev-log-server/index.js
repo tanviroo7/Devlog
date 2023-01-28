@@ -8,13 +8,12 @@ require('dotenv').config();
 
 // middleware
 app.use(cors());
-app.use(express.json());
-// DB INFORMATION
-// user: mydbuser
-// pass: o58NA5jluVMB8BhF
+app.use(express.json({ limit: '50mb' }));
+
+
 
 const uri =
-	'mongodb+srv://mydbuser:o58NA5jluVMB8BhF@cluster0.tb32okz.mongodb.net/?retryWrites=true&w=majority';
+	`mongodb+srv://${process.env.user}:${process.env.pass}@cluster0.tb32okz.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
@@ -63,12 +62,19 @@ async function run() {
 			console.log('post api called');
 			console.log(req.body);
 			const article = req.body;
-			const articleResult = await articlesCollection.insertOne(article);
-			article._id = articleResult.insertedId;
-			res.send(article);
+			try{
+                const articleResult = await articlesCollection.insertOne(
+					article
+				);
+				article._id = articleResult.insertedId;
+				res.send(article);
+            } catch(error){
+                res.status(404).json({ msg: 'error' });
+            }
 		});
         // Update an Article 
         app.put('/article/:id', async (req,res) =>{
+            console.log('update api called');
             const id = req.params.id;
             const updatedArticle = req.body;
             const filter = {_id:ObjectId(id)};
@@ -81,8 +87,16 @@ async function run() {
                     img:updatedArticle.img
                 },
             };
-            const result = await articlesCollection.updateOne(filter,updateDoc,options)
-            res.json(result);
+            try {
+                const result = await articlesCollection.updateOne(
+					filter,
+					updateDoc,
+					options
+				);
+				res.json(result);
+            } catch (error){
+                res.status(404).json({ msg: 'error' });
+            }
         });
         // Delete an article by id
         app.delete('/article/:id', async (req,res)=>{
@@ -93,6 +107,7 @@ async function run() {
             res.json(result);
         })
 	} finally {
+
 	}
 }
 run().catch(console.dir);
