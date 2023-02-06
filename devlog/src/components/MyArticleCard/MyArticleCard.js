@@ -1,35 +1,45 @@
-import React from 'react'
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaRegEdit, FaRegTrashAlt, FaArrowRight } from 'react-icons/fa';
 
 const MyArticleCard = (props) => {
 	const navigate = useNavigate();
-  const { img, title, description, _id, category, author, authorImg,setMyArticles , myArticles} = props.myArticle;
-  const newDescription = description.slice(0, 30) + '....';
+	const {
+		img,
+		title,
+		description,
+		_id,
+		category,
+		author,
+		authorImg,
+		setMyArticles,
+		myArticles,
+	} = props.myArticle;
+	const newDescription = description.slice(0, 30) + '....';
 
-  const handleDelete = id => {
-    const proceed = window.confirm('Are you sure you want to Delete?');
-    if(proceed){
-      const url = `http://localhost:4000/article/${id}`;
-		fetch(url, {
-			method: 'DELETE',
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.deletedCount > 0) {
-					alert('Deleted successfully');
-					// const remainingArticles = myArticles.filter(
-					// 	(Article) => Article._id !== id
-					// );
-					// setMyArticles(remainingArticles);
-					
-					navigate('/');
-				}
-			});
-    }
-  }
-  
-  return (
+	const handleDelete = (id) => {
+		const proceed = window.confirm('Are you sure you want to Delete?');
+		if (proceed) {
+			const url = `https://devlog-dkju.onrender.com/article/${id}`;
+			fetch(url, {
+				method: 'DELETE',
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.deletedCount > 0) {
+						alert('Deleted successfully');
+						// const remainingArticles = myArticles.filter(
+						// 	(Article) => Article._id !== id
+						// );
+						// setMyArticles(remainingArticles);
+
+						navigate('/');
+					}
+				});
+		}
+	};
+
+	return (
 		<section className='  '>
 			<div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-8 '>
 				<div className=''>
@@ -69,9 +79,9 @@ const MyArticleCard = (props) => {
 							</div>
 							<Link
 								to={`/article-list/${_id}`}
-								className='inline-flex items-center font-medium  text-primary-500 hover:underline'
+								className='inline-flex items-center font-medium  text-white hover:underline'
 							>
-								Read more <span className='ml-2'></span>
+								Read more <span className='ml-2 text-white'></span>
 								<span>
 									<FaArrowRight></FaArrowRight>
 								</span>
@@ -81,7 +91,7 @@ const MyArticleCard = (props) => {
 				</div>
 			</div>
 		</section>
-  );
-}
+	);
+};
 
-export default MyArticleCard
+export default MyArticleCard;

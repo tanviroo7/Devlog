@@ -34,7 +34,7 @@ const UpdateArticle = () => {
 	const [articleDetails, setArticleDetails] = useState({});
 
 	useEffect(() => {
-		fetch(`http://localhost:4000/articles/${id}`)
+		fetch(`https://devlog-dkju.onrender.com/articles/${id}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setArticleDetails(data);
@@ -52,24 +52,24 @@ const UpdateArticle = () => {
 		};
 		setArticleDetails(updatedArticle);
 	};
-	
+
 	const handleCategoryChange = (e) => {
 		const updatedCategory = e.target.value;
 		const updatedArticle = { ...articleDetails };
 		updatedArticle.category = updatedCategory;
 		setArticleDetails(updatedArticle);
 	};
-	
+
 	const handleUpdateArticle = async (e) => {
 		setIsUploading(true);
 		e.preventDefault();
-		const articleData = {...articleDetails};
-		if(image) {
+		const articleData = { ...articleDetails };
+		if (image) {
 			articleData.img = await handleUploadImage();
 		}
 		articleData.description = editorContent;
 		console.log('submitted');
-		const url = `http://localhost:4000/article/${id}`;
+		const url = `https://devlog-dkju.onrender.com/article/${id}`;
 		fetch(url, {
 			method: 'PUT',
 			headers: {
@@ -83,11 +83,13 @@ const UpdateArticle = () => {
 					alert('Updated Successfully');
 					navigate('/');
 				}
-			}).catch(error => {
-				console.log(error)
-			}).finally(() => {
-				setIsUploading(false);
 			})
+			.catch((error) => {
+				console.log(error);
+			})
+			.finally(() => {
+				setIsUploading(false);
+			});
 	};
 	return (
 		<div>

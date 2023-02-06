@@ -17,7 +17,7 @@ export const Login = () => {
 			{/* new component */}
 			<>
 				{/* component */}
-				<div className='bg-white dark:bg-gray-900'>
+				<div className=' bg-gray-900'>
 					<div className='flex justify-center h-screen'>
 						<div
 							className='hidden bg-cover lg:block lg:w-2/3'
@@ -41,10 +41,10 @@ export const Login = () => {
 						<div className='flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6'>
 							<div className='flex-1'>
 								<div className='text-center'>
-									<h2 className='text-4xl font-bold text-center text-gray-700 dark:text-white'>
+									<h2 className='text-4xl font-bold text-center text-white'>
 										Devlog
 									</h2>
-									<p className='mt-3 text-gray-500 dark:text-gray-300'>
+									<p className='mt-3 text-gray-300'>
 										Sign in with google to access your
 										account
 									</p>

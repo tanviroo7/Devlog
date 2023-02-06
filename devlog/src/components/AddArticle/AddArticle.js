@@ -55,7 +55,7 @@ const AddArticle = () => {
 			email,
 		};
 
-		fetch('http://localhost:4000/articles', {
+		fetch('https://devlog-dkju.onrender.com/articles', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
@@ -86,13 +86,16 @@ const AddArticle = () => {
 		// 	});
 	};
 	return (
-		<div>
+		<div className='bg-gray-600 overflow-hidden'> 
 			<Header></Header>
 			<div className='w-6/12 m-auto mt-2 mb-5 '>
 				<h1 className='bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl'>
 					Add Article
 				</h1>
-				<form className='flex flex-col justify-between space-y-4' onSubmit={handleAddArticle}>
+				<form
+					className='flex flex-col justify-between space-y-4'
+					onSubmit={handleAddArticle}
+				>
 					<div className='flex flex-col space-y-2'>
 						<label
 							htmlFor='message'
@@ -121,7 +124,7 @@ const AddArticle = () => {
 						<div className='input input-bordered border-[2px] rounded-md input-info h-fit p-0 overflow-hidden'>
 							<JoditEditor
 								// ref={editor}
-								style={{ width: '100%'}}
+								style={{ width: '100%' }}
 								type='text'
 								name='description'
 								value={editorContent}

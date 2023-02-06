@@ -2,7 +2,8 @@ import React from 'react'
 
 const Stats = () => {
   return (
-		<div className='ml-72 mb-20 '>
+		<div className='flex justify-center items-center'>
+		<div className=''>
 			<div className='stats shadow'>
 				<div className='stat'>
 					<div className='stat-figure text-secondary'>
@@ -67,6 +68,7 @@ const Stats = () => {
 					<div className='stat-desc'>↘︎ 90 (14%)</div>
 				</div>
 			</div>
+		</div>
 		</div>
   );
 }
