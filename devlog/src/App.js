@@ -11,6 +11,7 @@ import UpdateArticle from './components/UpdateArticle/UpdateArticle';
 import NotFound from './components/NotFound/NotFound';
 import UserProfile from './components/UserProfile/UserProfile';
 import AuthorArticles from './components/AuthorArticles/AuthorArticles';
+import Dashboard from './components/Dashboard/Dashboard';
 
 // import RequireAuth from './components/RequireAuth/RequireAuth';
 // import app from './Firebase/Firebase.init';
@@ -68,7 +69,11 @@ function App() {
 						path='/user-profile'
 						element={<RequireAuth><UserProfile></UserProfile></RequireAuth>}
 					/>
-					<Route path='*' element={<NotFound />} />
+					<Route
+						path='/dashboard/*'
+						element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}
+					/>
+					{/* <Route path='*' element={<NotFound />} /> */}
 				</Routes>
 			</Router>
 	);

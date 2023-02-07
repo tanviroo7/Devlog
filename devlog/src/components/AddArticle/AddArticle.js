@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import app from '../../Firebase/Firebase.init';
 import Header from '../Header/Header';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const auth = getAuth(app);
 
@@ -64,8 +65,17 @@ const AddArticle = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				alert('Added successfully');
+				
 				setEditorContent('');
+				toast.success('Article Added Successfully', {
+					position: 'bottom-right',
+					autoClose: 1500,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+				});
 				navigate('/');
 			})
 			.catch((err) => console.log(err))

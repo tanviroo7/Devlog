@@ -26,7 +26,7 @@ const Header = () => {
 					<ul className='items-stretch hidden space-x-3 lg:flex'>
 						<li className='flex'>
 							<Link
-								to='/my-articles'
+								to='/dashboard'
 								className='flex items-center px-4 -mb-1  text-blue-400 font-bold'
 							>
 								Dashboard

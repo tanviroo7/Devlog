@@ -3,6 +3,7 @@ import JoditEditor from 'jodit-react';
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import app from '../../Firebase/Firebase.init';
 import Header from '../Header/Header';
 
@@ -80,7 +81,15 @@ const UpdateArticle = () => {
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.modifiedCount > 0) {
-					alert('Updated Successfully');
+					toast.success('Article Updated Successfully', {
+						position: 'bottom-right',
+						autoClose: 1500,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+					});
 					navigate('/');
 				}
 			})

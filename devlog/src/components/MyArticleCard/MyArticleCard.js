@@ -40,8 +40,8 @@ const MyArticleCard = (props) => {
 	};
 
 	return (
-		<section className='  '>
-			<div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-8 '>
+		<section className=' '>
+			<div className='py-8 px-4  lg:py-4 lg:px-8 '>
 				<div className=''>
 					<article className='p-6   rounded-lg border  shadow-md bg-gray-800 border-gray-700'>
 						<div className=' grid grid-cols-3   mb-5 text-gray-500'>
@@ -50,8 +50,8 @@ const MyArticleCard = (props) => {
 								{category}
 							</span>
 							<Link to={`/update-article/${_id}`}>
-								<button className='text-lg text-white   hover:cursor-pointer ml-96 pl-56'>
-									<FaRegEdit></FaRegEdit>
+								<button className=' text-white hover:cursor-pointer ml-96 pl-10 '>
+									 <FaRegEdit className='text-white'></FaRegEdit>
 								</button>
 							</Link>
 							<button

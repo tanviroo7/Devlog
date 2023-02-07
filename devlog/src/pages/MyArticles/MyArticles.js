@@ -35,9 +35,9 @@ const MyArticles = () => {
 	}, [user?.email]);
 
 	return (
-		<div className='bg-gray-600 h-screen'>
+		<div className=' h-screen'>
 			<div className=''>
-				<Header></Header>
+				
 				<h1 className='text-center bg-gradient-to-r from-blue-300 via-green-300 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl '>
 					{' '}
 					My Articles{' '}

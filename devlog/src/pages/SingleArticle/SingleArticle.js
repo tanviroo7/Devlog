@@ -42,7 +42,7 @@ const SingleArticle = () => {
 	useEffect(() => {
 		if (triggerFetching) {
 			axios
-				.get(`http://localhost:4000/comments/${id}`)
+				.get(`https://devlog-dkju.onrender.com/comments/${id}`)
 				.then((response) => {
 					// Clear the form fields
 					setArticleComments(response.data);
@@ -84,7 +84,7 @@ const SingleArticle = () => {
 
 		// Send the comment to the server
 		axios
-			.post('http://localhost:4000/addcomment', comment)
+			.post('https://devlog-dkju.onrender.com/addcomment', comment)
 			.then((response) => {
 				// Clear the form fields
 				event.target.reset();
@@ -112,7 +112,7 @@ const SingleArticle = () => {
 		const proceed = window.confirm('Are you sure you want to Delete?');
 		if (proceed) {
 			axios
-				.delete(`http://localhost:4000/comment/${id}`)
+				.delete(`https://devlog-dkju.onrender.com/comment/${id}`)
 				.then((response) => {
 					setTriggerFetching(true);
 					toast.success('Comment Deleted', {
@@ -147,7 +147,7 @@ const SingleArticle = () => {
 		console.log(newVotes);
 		// Send the vote to the server
 		axios
-			.put('http://localhost:4000/updatevotes', {
+			.put('https://devlog-dkju.onrender.com/updatevotes', {
 				newVotes,
 				article_id: id,
 			})
